@@ -1,0 +1,61 @@
+var ob1,ob2,ob3,ob4 
+var fixedRect,movingRect
+function setup() {
+  createCanvas(800,400);
+  fixedRect = createSprite(400, 200, 50, 50);
+  fixedRect.shapeColor="green";
+  fixedRect.debug=true
+  movingRect = createSprite(150,150,50,50)
+  movingRect.shapeColor="green"
+  movingRect.debug=true
+  ob1 = createSprite(100,350,20,20);
+  ob1.shapeColor="red";
+  ob2 = createSprite(120,370,20,20);
+  ob2.shapeColor="red";
+  ob3 = createSprite(90,320,20,20);
+  ob3.shapeColor="red";
+  ob4 = createSprite(140,250,20,20);
+  ob4.shapeColor="red";
+}
+
+
+function draw() {
+  background(0);
+  ob2.x=World.mouseX
+  ob2.y=World.mouseY;  
+ 
+  if(collision(ob2,ob4)){
+
+ob4.shapeColor="blue";
+ ob2.shapeColor="blue"
+
+  }else{
+
+ob4.shapeColor="green"
+ob2.shapeColor="green"
+
+  }
+
+
+
+
+  drawSprites();
+}
+function collision(p1,p2){
+  if(p1.x - p2.x <= p2.width/2 + p1.width/2 &&
+    p2.x - p1.x <= p1.width/2 + p1.width/2 &&
+    p1.y - p2.y <= p1.height/2 + p2.height/2 &&
+    p2.y - p1.y <= p2.height/2 + p2.height/2 ){
+    
+    
+
+    return true;
+    
+    }
+    else{
+    
+      
+
+      return false;
+    }
+}
